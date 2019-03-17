@@ -13,7 +13,13 @@ public class Car {
     private Long id;
 
     @Column
-    private String name;
+    private String brand;
+
+    @Column
+    private String model;
+
+    @Column
+    private String year;
 
     public Long getId() {
         return id;
@@ -23,11 +29,27 @@ public class Car {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getBrand() {
+        return brand;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
     }
 }
