@@ -1,4 +1,4 @@
-package matpro29.komis;
+package matpro29.komis.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -9,8 +9,11 @@ import javax.persistence.Entity;
 public class User {
 
     @Id
-    @GeneratedValue(generator="user_sequence")
+    @GeneratedValue(generator = "user_sequence")
     private Long id;
+
+    @Column
+    private String email;
 
     @Column
     private String username;
@@ -24,6 +27,14 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {

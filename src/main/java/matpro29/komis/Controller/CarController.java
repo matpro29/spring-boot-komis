@@ -1,5 +1,7 @@
-package matpro29.komis;
+package matpro29.komis.Controller;
 
+import matpro29.komis.Repository.CarRepository;
+import matpro29.komis.Entity.Car;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

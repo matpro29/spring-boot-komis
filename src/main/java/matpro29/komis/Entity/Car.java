@@ -1,15 +1,16 @@
-package matpro29.komis;
+package matpro29.komis.Entity;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Entity;
+import javax.persistence.GenerationType;
 
 @Entity
 public class Car {
 
     @Id
-    @GeneratedValue(generator="car_sequence")
+    @GeneratedValue(generator = "car_sequence")
     private Long id;
 
     @Column
