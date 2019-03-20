@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 public class User {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator="user_sequence")
     private Long id;
 
     @Column

@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 public class Car {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(generator="car_sequence")
     private Long id;
 
     @Column
