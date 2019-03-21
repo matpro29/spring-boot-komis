@@ -14,8 +14,8 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .inMemoryAuthentication()
-            .withUser("map")
-            .password("map")
+            .withUser("user")
+            .password("password")
             .roles("USER");
     }
 
@@ -23,7 +23,7 @@ public class BasicAuthConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-            .antMatchers("/login").permitAll()
+            .antMatchers("/login", "/car").permitAll()
             .anyRequest()
             .authenticated()
             .and()
