@@ -17,11 +17,13 @@ import java.util.stream.Collectors;
 
 @RestController
 public class UserController {
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private UserRepository userRepository;
+    private User user;
 
-    private UserRepository repository;
-
-    public  UserController( UserRepository repository) {
-        this.repository = repository;
+    public UserController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
 
 //    @GetMapping("/user")
@@ -34,20 +36,24 @@ public class UserController {
     @RequestMapping("/register")
     @CrossOrigin(origins = "http://localhost:4200")
     public void register(@RequestBody User user) {
-        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
-
         user.setEmail(user.getEmail().toLowerCase());
         user.setUsername(user.getUsername().toLowerCase());
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setPassword(this.bCryptPasswordEncoder.encode(user.getPassword()));
         user.setRole("USER");
 
-        repository.save(user);
+        userRepository.save(user);
     }
 
     @RequestMapping("/login")
     @CrossOrigin(origins = "http://localhost:4200")
-    public boolean login(@RequestBody User user) {
-        return user.getUsername().equals("map") && user.getPassword().equals("map");
+    public User login(@RequestBody User loginUser) {
+        this.user = this.userRepository.findByUsername(loginUser.getUsername());
+
+        if (!(user != null && this.bCryptPasswordEncoder.matches(loginUser.getPassword(), user.getPassword()))) {
+            this.user = null;
+        }
+
+        return this.user;
     }
 
 //    @RequestMapping("/user")
