@@ -39,20 +39,21 @@ public class UserController {
         user.setEmail(user.getEmail().toLowerCase());
         user.setUsername(user.getUsername().toLowerCase());
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        user.setRole("USER");
 
-        repository.saveAndFlush(user);
+        repository.save(user);
     }
 
     @RequestMapping("/login")
     @CrossOrigin(origins = "http://localhost:4200")
     public boolean login(@RequestBody User user) {
-        return user.getUsername().equals("user") && user.getPassword().equals("password");
+        return user.getUsername().equals("map") && user.getPassword().equals("map");
     }
 
-    @RequestMapping("/user")
-    @CrossOrigin(origins = "http://localhost:4200")
-    public Principal user(HttpServletRequest request) {
-        String authToken = request.getHeader("Authorization") .substring("Basic".length()).trim();
-        return () ->  new String(Base64.getDecoder().decode(authToken)).split(":")[0];
-    }
+//    @RequestMapping("/user")
+//    @CrossOrigin(origins = "http://localhost:4200")
+//    public Principal user(HttpServletRequest request) {
+//        String authToken = request.getHeader("Authorization") .substring("Basic".length()).trim();
+//        return () ->  new String(Base64.getDecoder().decode(authToken)).split(":")[0];
+//    }
 }
