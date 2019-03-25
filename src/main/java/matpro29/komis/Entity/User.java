@@ -1,9 +1,7 @@
 package matpro29.komis.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -11,6 +9,9 @@ public class User {
     @Id
     @GeneratedValue(generator = "user_sequence")
     private Long id;
+
+    @OneToMany(mappedBy = "user")
+    private Set<Car> cars;
 
     @Column
     private String email;

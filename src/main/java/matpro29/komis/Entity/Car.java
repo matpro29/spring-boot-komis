@@ -1,10 +1,6 @@
 package matpro29.komis.Entity;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Entity;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -18,6 +14,10 @@ public class Car {
 
     @Column
     private String model;
+
+    @ManyToOne
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
     @Column
     private String year;
@@ -44,6 +44,14 @@ public class Car {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getYear() {

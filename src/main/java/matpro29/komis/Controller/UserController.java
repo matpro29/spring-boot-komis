@@ -26,13 +26,6 @@ public class UserController {
         this.bCryptPasswordEncoder = new BCryptPasswordEncoder();
     }
 
-//    @GetMapping("/user")
-//    @CrossOrigin(origins = "http://localhost:4200")
-//    public Collection<User> ars() {
-//        return repository.findAll().stream()
-//                .collect(Collectors.toList());
-//    }
-
     @RequestMapping("/register")
     @CrossOrigin(origins = "http://localhost:4200")
     public void register(@RequestBody User user) {
@@ -55,11 +48,4 @@ public class UserController {
 
         return this.user;
     }
-
-//    @RequestMapping("/user")
-//    @CrossOrigin(origins = "http://localhost:4200")
-//    public Principal user(HttpServletRequest request) {
-//        String authToken = request.getHeader("Authorization") .substring("Basic".length()).trim();
-//        return () ->  new String(Base64.getDecoder().decode(authToken)).split(":")[0];
-//    }
 }
