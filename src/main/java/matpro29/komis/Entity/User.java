@@ -13,14 +13,17 @@ public class User {
     @OneToMany(mappedBy = "user")
     private Set<Car> cars;
 
-    @Column
+    @Column(unique = true)
     private String email;
 
-    @Column
+    @Column(unique = true)
     private String username;
 
     @Column
     private String password;
+
+    @Column
+    private String phone;
 
     @Column
     private String role;
@@ -55,6 +58,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getRole() {

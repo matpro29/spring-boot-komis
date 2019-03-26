@@ -40,7 +40,7 @@ public class UserController {
     @RequestMapping("/login")
     @CrossOrigin(origins = "http://localhost:4200")
     public User login(@RequestBody User loginUser) {
-        this.user = this.userRepository.findByUsername(loginUser.getUsername());
+        this.user = this.userRepository.findByUsername(loginUser.getUsername().toLowerCase());
 
         if (!(user != null && this.bCryptPasswordEncoder.matches(loginUser.getPassword(), user.getPassword()))) {
             this.user = null;

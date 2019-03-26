@@ -13,7 +13,13 @@ public class Car {
     private String brand;
 
     @Column
+    private String description;
+
+    @Column
     private String model;
+
+    @Column
+    private String price;
 
     @ManyToOne
     @JoinColumn(name="user_id", nullable = false)
@@ -38,12 +44,28 @@ public class Car {
         this.brand = brand;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getModel() {
         return model;
     }
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
     }
 
     public User getUser() {
