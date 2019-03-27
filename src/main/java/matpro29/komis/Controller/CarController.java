@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Optional;
 
 @RestController
 public class CarController {
@@ -47,5 +48,13 @@ public class CarController {
     @CrossOrigin(origins = "http://localhost:4200")
     public Collection<Car> my(@RequestBody String user_id) {
         return carRepository.findAllByUserId(Long.parseLong(user_id));
+    }
+
+    @RequestMapping("/car/info")
+    @CrossOrigin(origins = "http://localhost:4200")
+    public Optional<Car> info(@RequestBody String car_id) {
+        Optional<Car> car = carRepository.findById(Long.parseLong(car_id));
+
+        return car;
     }
 }
